@@ -2,5 +2,5 @@ package com.jasoncodes.springsandbox.keys;
 
 public class Api {
 
-    private String key1 = "Testing this before uploading to Git";
+    private String key1 = "did this change";
 }
