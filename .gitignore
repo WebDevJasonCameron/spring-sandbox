@@ -37,4 +37,4 @@ build/
 src/main/resources/application.properties
 
 # My API Info
-.ApiKeys
+keys/
