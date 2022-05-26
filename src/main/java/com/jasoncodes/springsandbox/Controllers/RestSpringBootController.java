@@ -1,6 +1,7 @@
 package com.jasoncodes.springsandbox.Controllers;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.jasoncodes.springsandbox.Api.Keys.APIK;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +49,9 @@ public class RestSpringBootController {
     @GetMapping(value = "/r1")
     @JsonBackReference
     private String getRecipe(){
-        String url = "https://api.spoonacular.com/recipes/complexSearchquery=pasta/";
+
+        String api01 = APIK.getKey01();
+        String url = "https://api.spoonacular.com/recipes/complexSearchquery=pasta/information?apiKey=" + api01;
         // Will add key
         RestTemplate restTemplate = new RestTemplate();
         String r1 = restTemplate.getForObject(url, String.class);
