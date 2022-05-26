@@ -9,6 +9,8 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class RestSpringBootController {
 
+
+
     @RequestMapping("/hello")
     public String hello(){
         return "hello world";
@@ -46,7 +48,7 @@ public class RestSpringBootController {
     @GetMapping(value = "/r1")
     @JsonBackReference
     private String getRecipe(){
-        String url = "https://api.spoonacular.com/recipes/complexSearchquery=pasta";
+        String url = "https://api.spoonacular.com/recipes/complexSearchquery=pasta/";
         // Will add key
         RestTemplate restTemplate = new RestTemplate();
         String r1 = restTemplate.getForObject(url, String.class);

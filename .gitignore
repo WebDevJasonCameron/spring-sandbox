@@ -35,3 +35,6 @@ build/
 
 # Access to DB
 src/main/resources/application.properties
+
+# My API Info
+/src/main/java/com/jasoncodes/springsandbox/keys/Api.java
