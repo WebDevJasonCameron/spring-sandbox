@@ -1,5 +1,5 @@
 // VARS, ARRAYS AND LISTS
-let recipeListReturn;
+let rLR;
 
 
 // GET RN
@@ -24,27 +24,37 @@ function readSpoonRecipeListByKeyWord(kw){
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            recipeListReturn = data;
-            // recipeListReturn = JSON.stringify(data);
-            // console.log('recipeListReturn 1: ' +  recipeListReturn);
-        }).then(() => {
-            // console.log('recipeListReturn 2: ' + recipeListReturn);
-            cycleDataArray(recipeListReturn);
+            console.log(data.results[0].id)
+            rLR = data;
+            console.log(rLR.results[0].id);
+        // }).then(() => {
+            console.log(rLR.results[0].id);
+            // cycleDataArray(recipeListReturn);
     })
 
 }
 
 // TEST
 function cycleDataArray(dArray){
-    for (let i = 1; i < dArray.length; i++) {
+    for (let i = 0; i < dArray.length; i++) {
         console.log(dArray.results[i] + ' | ' + dArray.results[i].title + ' | ' + dArray.results[i].image);
 
     }
 }
 
 
-
 // CREATE ROW
-function makeRow(){
+function makeRow(r, n){
+    return `<tr>
+                <th scope="row">${r.results[n].image}</th>
+                <th>${r.results[n].id}</th>
+                <th>${r.results[n].title}</th>
+                <th>
+                    <form action="">
+                        <input type="hidden" name="recipe-${r.results[n].id}" value="${r.results[n].id}">
+                        <button type="submit" class="btn btn-primary">Add...</button></th>
+                    </form>
+            </tr>`
+
 
 }
