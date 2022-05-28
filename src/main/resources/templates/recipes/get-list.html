@@ -12,10 +12,41 @@
     <section th:replace="/partials/partials.html :: header-section ('Getting a Recipe List | Form')"></section>
 
     <!--MAIN-->
+    <!--input form-->
+    <form class="form-inline my-2 my-lg-0">
+        <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search">
+        <button id="get-recipe-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <!--card-->
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">IMG</th>
+                <th scope="col">CID</th>
+                <th scope="col">TITLE</tr>
+                <th scope="col">Add</tr>
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">R. IMG</th>
+                <th>R. ID</th>
+                <th>R. Title</th>
+                <th>
+                    <button type="submit" class="btn btn-primary">Add...</button></th>
+            </tr>
+        </tbody>
+    </table>
+
+
 
 
     <!--SCRIPTS-->
     <section th:replace="/partials/partials.html :: script-section"></section>
+    <script th:src="@{/js/get-recipe.js}"></script>
+
+
 </div>
 </body>
 </html>

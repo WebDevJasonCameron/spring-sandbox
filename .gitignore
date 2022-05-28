@@ -38,3 +38,4 @@ src/main/resources/application.properties
 
 # My API Info
 Api/
+keys.js
