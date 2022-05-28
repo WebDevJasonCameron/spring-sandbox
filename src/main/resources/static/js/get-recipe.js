@@ -1,5 +1,6 @@
 // VARS, ARRAYS AND LISTS
 let rLR;
+let rD;
 
 
 // SEARCH BTN ACTION
@@ -8,10 +9,12 @@ $('#get-recipe-btn').on('click', (e) => {
     getSpoonRecipeListByKeyWord($('#search-input').val())
 } )
 
-// GOT TO DETAILS PAGE
+// GET DETAIL'S PAGE
 $('.add-btn').on('click', (e) => {
     e.preventDefault();
-    getSpoonRecipeDetailsByID(id);
+    const cid = $(this).val();
+    console.log("cid: " + cid)
+    // getSpoonRecipeDetailsByID(cid);
 })
 
 // GET R LIST
@@ -50,10 +53,13 @@ function getSpoonRecipeDetailsByID(cid){
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            rLR = data;
-        }).then(() => {
-        $('#recipe-results').html(detailsCard(rLR));
-    })
+            rD = data;
+        })
+        .then(() => {
+
+
+
+        });
 }
 
 
@@ -64,8 +70,7 @@ function getSpoonRecipeDetailsByID(cid){
  */
 // CREATE CARD
 function makeRow(r){
-    const out =
-        `
+    return `
         <div class="card border-0 mt-4">
             <div class="row no-gutters">
                 <div class="col-sm-3">
@@ -82,17 +87,16 @@ function makeRow(r){
                     </div>
                     <div class="card-footer">
                         <form action="/recipes/get-list" method="get">
-                            <input type="hidden" name="recipe-to-db" value="${r.id}" >
-                            <button type="submit" class="btn btn-primary add-btn">Add..
+                            <input type="hidden" name="recipe-to-db" " >
+                            <button type="submit" class="btn btn-primary add-btn" value="${r.id}>Add..
                             </button>  
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="recipe-details-${r.id}"></div>
     `
-    console.log(out);
-    return out;
 }
 
 // COMBINE CARDS
