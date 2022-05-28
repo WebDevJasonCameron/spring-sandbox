@@ -14,37 +14,6 @@
   <!--MAIN-->
 
 
-  <input id = "search"><button onclick="getRecipe(document.getElementById('search').value)">Search</button>
-
-  <div id="output"></div>
-
-  <a href="" id="sourcLink"></a>
-
-
-  <script>
-    
-    function getSource(id) {
-      $.getJSON({
-        url:"https://api.spoonacular.com/recipes/" + id + "/information?apiKey=apikey",
-        success: function(res){
-          document.getElementById("sourceLink").innerHTML = res.sourceUrl;
-          document.getElementById("sourceLink").href = res.sourceUrl;
-        }
-      });
-    }
-    
-    function getRecipe(q){
-      $.getJSON({
-        url:"https://api.spoonacular.com/recipes/search?apikey" + q,
-        success: function(res){
-          document.getElementById("output").innerHTML = "<h1>" + res.results[0].title + "</h1><br><img src='" + res.baseUri + res.results[0].image + "'width='400' /><br> ready in " + res.results[0].readyInMinutes + " minutes";
-          getSource(res.results[0].id)
-        }
-      })
-    }
-    
-  </script>
-
 
 
 
