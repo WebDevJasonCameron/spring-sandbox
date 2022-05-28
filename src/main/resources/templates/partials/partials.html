@@ -24,8 +24,17 @@
         </button>
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarCollapse">
             <ul class="navbar-nav">
-                <li>
-                    <a href="#">Home</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                        Recipe Items
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/recipes">Recipe</a>
+                        <a class="dropdown-item" href="/recipes/get-list">Get List</a>
+                        <a class="dropdown-item" href="/recipes/get-details">Get Full Recipe</a>
+                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
                 </li>
             </ul>
         </div>
