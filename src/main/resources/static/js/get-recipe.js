@@ -10,12 +10,12 @@ $('#get-recipe-btn').on('click', (e) => {
 } )
 
 // GET DETAIL'S PAGE
-$('.add-btn').on('click', (e) => {
-    e.preventDefault();
-    const cid = $(this).val();
-    console.log("cid: " + cid)
-    // getSpoonRecipeDetailsByID(cid);
-})
+// $('.add-btn').on('click', (e) => {
+//     e.preventDefault();
+//     const cid = $(this).attr('name').val();
+//     console.log(cid)
+//     // getSpoonRecipeDetailsByID(cid);
+// })
 
 // GET R LIST
 function getSpoonRecipeListByKeyWord(kw){
@@ -34,7 +34,7 @@ function getSpoonRecipeListByKeyWord(kw){
             console.log(data);
             rLR = data;
         }).then(() => {
-            $('#recipe-results').html(combineRows(rLR));
+            $('#recipe-results').html(combineCards(rLR));
     })
 }
 
@@ -69,8 +69,8 @@ function getSpoonRecipeDetailsByID(cid){
  * Body
  */
 // CREATE CARD
-function makeRow(r){
-    return `
+function makeCard(r){
+    return  `
         <div class="card border-0 mt-4">
             <div class="row no-gutters">
                 <div class="col-sm-3">
@@ -86,9 +86,9 @@ function makeRow(r){
                         </div>
                     </div>
                     <div class="card-footer">
-                        <form action="/recipes/get-list" method="get">
-                            <input type="hidden" name="recipe-to-db" " >
-                            <button type="submit" class="btn btn-primary add-btn" value="${r.id}>Add..
+                        <form>
+                            <input type="hidden" name="recipe-to-db" value="${r.id}" >
+                            <button id="add-btn-${r.id}" type="submit" class="btn btn-primary add-btn">Add..
                             </button>  
                         </form>
                     </div>
@@ -96,17 +96,33 @@ function makeRow(r){
             </div>
         </div>
         <div id="recipe-details-${r.id}"></div>
+    ` + innerCardScript(r)
+
+}
+
+// INSIDE CARD SCRIPT
+function innerCardScript(r){
+    return `
+        <script>
+            $('#recipe-details-${r.id}').on('click', (e) => {
+                e.preventDefault();
+                console.log(${r.id})
+                // getSpoonRecipeDetailsByID(cid);
+        
+            })
+        </script>
+
     `
 }
 
+
 // COMBINE CARDS
-function combineRows(rL){
+function combineCards(rL){
     let output = '';
     for (let i = 0; i < rL.results.length; i++) {
         console.log("in the for loop")
-        output += makeRow(rL.results[i])
+        output += makeCard(rL.results[i])
     }
-    console.log("output was : " + output);
     return output;
 }
 
