@@ -23,7 +23,7 @@ function getSpoonRecipeListByKeyWord(kw){
     const apiKey02 = SPOON_KEY_02;
     const apiKey03 = SPOON_KEY_03;
 
-    const spoonURL = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey01 + '&query=' + kw + '&offset=0&number=100';
+    const spoonURL = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey01 + '&query=' + kw + '&offset=0&number=10';
     const readOption = {
         method: 'GET',
     };
@@ -70,6 +70,10 @@ function getSpoonRecipeDetailsByID(cid){
  */
 // CREATE CARD
 function makeCard(r){
+    const apiKey01 = SPOON_KEY_01;
+    const apiKey02 = SPOON_KEY_02;
+    const apiKey03 = SPOON_KEY_03;
+
     return  `
         <div class="card border-0 mt-4">
             <div class="row no-gutters">
@@ -86,41 +90,27 @@ function makeCard(r){
                         </div>
                     </div>
                     <div class="card-footer">
-                        <form>
-                            <input type="hidden" name="recipe-to-db" value="${r.id}" >
-                            <button id="add-btn-${r.id}" type="submit" class="btn btn-primary add-btn">Add..
+                        <form action="/recipes/get-details" method="post" >
+                            <input type="hidden" name="image" value="${r.image}" >
+                            <input type="hidden" name="title" value="${r.title}" >
+                            <input type="hidden" name="id" value="${r.id}" >
+                            <button type="submit" class="btn btn-primary add-btn">Add to DB
                             </button>  
-                        </form>
+                        </form>           
                     </div>
                 </div>
             </div>
         </div>
-        <div id="recipe-details-${r.id}"></div>
-    ` + innerCardScript(r)
-
-}
-
-// INSIDE CARD SCRIPT
-function innerCardScript(r){
-    return `
-        <script>
-            $('#recipe-details-${r.id}').on('click', (e) => {
-                e.preventDefault();
-                console.log(${r.id})
-                // getSpoonRecipeDetailsByID(cid);
-        
-            })
-        </script>
-
     `
 }
+
+
 
 
 // COMBINE CARDS
 function combineCards(rL){
     let output = '';
     for (let i = 0; i < rL.results.length; i++) {
-        console.log("in the for loop")
         output += makeCard(rL.results[i])
     }
     return output;
