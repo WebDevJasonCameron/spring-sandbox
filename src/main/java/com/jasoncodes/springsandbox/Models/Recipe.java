@@ -1,6 +1,8 @@
 package com.jasoncodes.springsandbox.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,9 +12,10 @@ public class Recipe {
     // ATT
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonBackReference
     @Column(name = "id")
     private long id;
-    @Column(name = "cid")
+    @Column(name = "cid", unique = true)
     private long cid;
     @Column(name = "title",nullable = false)
     private String title;

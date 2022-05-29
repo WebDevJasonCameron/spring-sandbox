@@ -32,6 +32,7 @@
                         <a class="dropdown-item" href="/recipes">Recipe</a>
                         <a class="dropdown-item" href="/recipes/get-list">Get List</a>
                         <a class="dropdown-item" href="/recipes/get-details">Get Full Recipe</a>
+                        <a class="dropdown-item" href="/recipes/test-json" >Check Db Json</a>
                     </div>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Home</a>
@@ -45,7 +46,65 @@
         <h1 th:text="${headerName}"></h1>
     </section>
 
+    <!--MODEL ... need to finish-->
+    <div class="modal fad" id="recipe-details-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="#" alt="Image data here">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
+                    <!--
+
+                    PRIORITY
+
+                        image_url
+                        cid
+                        title
+                        summary
+                        instructions
+
+                            ingredients_cid
+                            ingredients_name
+                            ingredients_original            (Amount)
+                            ingredients_amount              (if you break it down)
+                            ingredients_unit
+
+
+                    SECONDARY
+
+                        ready_in_minutes
+                        servings
+                        source_name
+                        source_url
+
+                    TERTIARY
+
+                        vegetarian                          (boolean)
+                        vegan
+                        gluten_free
+                        dairy_free
+                        weight_watchers_smart_points
+                        dish_type
+
+                   -->
+
+
+
+                    <form>
+                        <!--image-url-->
+                        <input type="hidden" name="image-url" value="${r.img}">
+                        <!--cid-->
+                        <input type="hidden" name="cid" value="${r.id}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--SCRIPTS-->
     <section th:fragment="script-section">

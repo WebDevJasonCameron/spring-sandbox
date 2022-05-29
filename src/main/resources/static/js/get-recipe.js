@@ -44,7 +44,7 @@ function getSpoonRecipeDetailsByID(cid){
     const apiKey02 = SPOON_KEY_02;
     const apiKey03 = SPOON_KEY_03;
 
-    const spoonURL = 'https://api.spoonacular.com/recipes/' + cid + 'information?apiKey=' + apiKey01;
+    const spoonURL = 'https://api.spoonacular.com/recipes/' + cid + '/information?apiKey=' + apiKey01;
     const readOption = {
         method: 'GET',
     };

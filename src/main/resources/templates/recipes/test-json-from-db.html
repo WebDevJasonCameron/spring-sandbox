@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/partials/partials.html :: head ('Test Json from db')"></head>
+<body>
+<div class="container">
+    <!--NAV-->
+    <nav th:replace="/partials/partials.html :: nav-component"></nav>
+
+    <!--HEADER-->
+    <section th:replace="/partials/partials.html :: header-section ('Test Json from DB')"></section>
+
+    <!--MAIN-->
+    <!--Viewable-->
+    <!--/*@thymesVar id="recipes" type=""*/-->
+    <h2>show</h2>
+    <div th:each="recipe : ${recipes}">
+        <span th:text="${recipe.title}">recipe title</span>
+    </div>
+    <!--Hidden-->
+    <h2>hidden</h2>
+    <div th:each="recipe : ${recipes}">
+        <span th:text="${recipe.title}" style="display: none">recipe title</span>
+    </div>
+    <!--Marking Bottom-->
+    <h2>bottom</h2>
+    <!--String Hidden-->
+    <span th:text="${recipes2}">String of the R</span>
+
+
+    <!--SCRIPTS-->
+    <section th:replace="/partials/partials.html :: script-section"></section>
+</div>
+</body>
+</html>
