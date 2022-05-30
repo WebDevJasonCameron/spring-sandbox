@@ -49,75 +49,81 @@
     <!--MODEL ... need to finish-->
     <div th:fragment="recipe-details-modal" class="modal fade" id="recipe-details-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-            <div id="recipe-details-modal-content" class="modal-content">
-                <!--header-->
-                <div class="modal-header">
-                    <img src="#" alt="Image data here">
+            <div class="modal-content">
+                <div>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
                 </div>
-                <!--body-->
-                <div class="modal-body">
-                    <h4>Title</h4>
-                    <ul>
-                        <li>Summary</li>
-                        <li>Instructions</li>
-                        <li>Time: </li>
-                    </ul>
-                    <h4>Ingredients</h4>
-                    <ul>                                    <!--for each here-->
-                        <li>Cid</li>
-                        <li>Name</li>
-                        <li>Origin</li>
-                    </ul>
-                    <h4>Diet Notes:</h4>
-                    <ul>
-                        <li>vegetarian: bool</li>
-                        <li>vegan: bool</li>
-                        <li>gluten free: bool</li>
-                        <li>dairy free: bool</li>
-                        <li>weight watchers smart points: num</li>
-                        <li>dish type: string list</li>
-                    </ul>
-
-                </div>
-                <!--footer-->
-                <div class="modal-footer">
-                    <div>
-                        <small>Source: sourc_name</small>
+                <!--JS MODAL CONTENT HERE-->
+                <div  id="recipe-details-modal-content" >
+                    <!--header-->
+                    <div class="modal-header">
+                        <img src="#" alt="Image data here">
                     </div>
-                    <form action="x">
-                        <div id="recipe-data">
-                            <input type="hidden" name="image-url" value="#">
-                            <input type="hidden" name="cid" value="#">
-                            <input type="hidden" name="title" value="#">
-                            <input type="hidden" name="summary" value="#">
-                            <input type="hidden" name="instructions" value="#">
-                            <input type="hidden" name="ready_in_minutes" value="#">
-                            <input type="hidden" name="servings" value="#">
-                            <input type="hidden" name="source_name" value="#">
-                            <input type="hidden" name="source_url" value="#">
-                            <input type="hidden" name="vegetarian" value="#">
-                            <input type="hidden" name="ingredients_cid" value="#">
-                            <input type="hidden" name="vegan" value="#">
-                            <input type="hidden" name="gluten_free" value="#">
-                            <input type="hidden" name="dairy_free" value="#">
-                            <input type="hidden" name="weight_watchers_smart_points" value="#">
-                            <input type="hidden" name="dish_type" value="#">
-                        </div>
-                        <div id="ingredients">      <!--for each-->
-                            <input type="hidden" name="ingredients_name" value="#">
-                            <input type="hidden" name="ingredients_original" value="#">
-                            <input type="hidden" name="ingredients_amount" value="#">
-                            <input type="hidden" name="ingredients_unit" value="#">
-                        </div>
+                    <!--body-->
+                    <div class="modal-body">
+                        <h4>Title</h4>
+                        <ul>
+                            <li>Summary</li>
+                            <li>Instructions</li>
+                            <li>Time: </li>
+                        </ul>
+                        <h4>Ingredients</h4>
+                        <ul>                                    <!--for each here-->
+                            <li>Cid</li>
+                            <li>Name</li>
+                            <li>Origin</li>
+                        </ul>
+                        <h4>Diet Notes:</h4>
+                        <ul>
+                            <li>vegetarian: bool</li>
+                            <li>vegan: bool</li>
+                            <li>gluten free: bool</li>
+                            <li>dairy free: bool</li>
+                            <li>weight watchers smart points: num</li>
+                            <li>dish type: string list</li>
+                        </ul>
+
+                    </div>
+                    <!--footer-->
+                    <div class="modal-footer">
                         <div>
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" type="button">Add to DB</button>
+                            <small>Source: sourc_name</small>
                         </div>
-                    </form>
+                        <form action="x">
+                            <div id="recipe-data">
+                                <input type="hidden" name="image-url" value="#">
+                                <input type="hidden" name="cid" value="#">
+                                <input type="hidden" name="title" value="#">
+                                <input type="hidden" name="summary" value="#">
+                                <input type="hidden" name="instructions" value="#">
+                                <input type="hidden" name="ready_in_minutes" value="#">
+                                <input type="hidden" name="servings" value="#">
+                                <input type="hidden" name="source_name" value="#">
+                                <input type="hidden" name="source_url" value="#">
+                                <input type="hidden" name="vegetarian" value="#">
+                                <input type="hidden" name="ingredients_cid" value="#">
+                                <input type="hidden" name="vegan" value="#">
+                                <input type="hidden" name="gluten_free" value="#">
+                                <input type="hidden" name="dairy_free" value="#">
+                                <input type="hidden" name="weight_watchers_smart_points" value="#">
+                                <input type="hidden" name="dish_type" value="#">
+                            </div>
+                            <div id="ingredients">      <!--for each-->
+                                <input type="hidden" name="ingredients_name" value="#">
+                                <input type="hidden" name="ingredients_original" value="#">
+                                <input type="hidden" name="ingredients_amount" value="#">
+                                <input type="hidden" name="ingredients_unit" value="#">
+                            </div>
+                            <div>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                <button class="btn btn-primary" type="button">Add to DB</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

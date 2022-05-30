@@ -2,28 +2,31 @@
 let rLR;
 let rD;
 
-
+/**
+ *   PAGE ACTIONS
+ */
 // SEARCH BTN ACTION
 $('#get-recipe-btn').on('click', (e) => {
     e.preventDefault();
     getSpoonRecipeListByKeyWord($('#search-input').val())
 } )
 
-// GET DETAIL'S PAGE
-// $('.add-btn').on('click', (e) => {
-//     e.preventDefault();
-//     const cid = $(this).attr('name').val();
-//     console.log(cid)
-//     // getSpoonRecipeDetailsByID(cid);
-// })
+// TEST
+function testFunction(id){
+    getSpoonRecipeDetailsByID(id)
+}
 
+
+/**
+ *    API CRUD
+ */
 // GET R LIST
 function getSpoonRecipeListByKeyWord(kw){
-    const apiKey01 = SPOON_KEY_01;
-    const apiKey02 = SPOON_KEY_02;
-    const apiKey03 = SPOON_KEY_03;
+    const apiKey = SPOON_KEY_01;
+    // const apiKey = SPOON_KEY_02;
+    // const apiKey = SPOON_KEY_03;
 
-    const spoonURL = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey01 + '&query=' + kw + '&offset=0&number=10';
+    const spoonURL = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey + '&query=' + kw + '&offset=0&number=10';
     const readOption = {
         method: 'GET',
     };
@@ -31,7 +34,7 @@ function getSpoonRecipeListByKeyWord(kw){
     fetch(spoonURL, readOption)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             rLR = data;
         }).then(() => {
             $('#recipe-results').html(combineCards(rLR));
@@ -40,11 +43,11 @@ function getSpoonRecipeListByKeyWord(kw){
 
 // GET R DETAILS
 function getSpoonRecipeDetailsByID(cid){
-    const apiKey01 = SPOON_KEY_01;
-    const apiKey02 = SPOON_KEY_02;
-    const apiKey03 = SPOON_KEY_03;
+    const apiKey = SPOON_KEY_01;
+    // const apiKey = SPOON_KEY_02;
+    // const apiKey = SPOON_KEY_03;
 
-    const spoonURL = 'https://api.spoonacular.com/recipes/' + cid + '/information?apiKey=' + apiKey01;
+    const spoonURL = 'https://api.spoonacular.com/recipes/' + cid + '/information?apiKey=' + apiKey;
     const readOption = {
         method: 'GET',
     };
@@ -56,9 +59,8 @@ function getSpoonRecipeDetailsByID(cid){
             rD = data;
         })
         .then(() => {
-
-
-
+            // Loader here
+            $('#recipe-details-modal-content').html(makeModalBody(rD));
         });
 }
 
@@ -66,14 +68,10 @@ function getSpoonRecipeDetailsByID(cid){
 
 
 /**
- * Body
+ * BUILD BODY
  */
 // CREATE CARD
 function makeCard(r){
-    const apiKey01 = SPOON_KEY_01;
-    const apiKey02 = SPOON_KEY_02;
-    const apiKey03 = SPOON_KEY_03;
-
     return  `
         <div class="card border-0 mt-4">
             <div class="row no-gutters">
@@ -120,22 +118,100 @@ function makeCard(r){
 function combineCards(rL){
     let output = '';
     for (let i = 0; i < rL.results.length; i++) {
-        output += makeCard(rL.results[i])
+        output += makeCard(rL.results[i]);
     }
     return output;
 }
 
 // CREATE MODAL BODY
-function makeModalBody(id){
-    return id
+function makeModalBody(r){
+    return `
+                        <div  id="recipe-details-modal-content" >
+                    <!--header-->
+                    <div class="modal-header">
+                        <img src="${r.image}" alt="Image data here">
+                    </div>
+                    <!--body-->
+                    <div class="modal-body">
+                        <h4>${r.title}</h4>
+                        <ul>
+                            <li>${r.summary}</li>
+                            <li>${r.instructions}</li>
+                            <li>Time: ${r.readyInMinutes}</li> 
+                        </ul>
+                        <h4>Ingredients</h4>
+                        <ol> 
+                        
+                        
+                                ` +  ingredientList(r) + `                   
+                        
+                        
+                        </ol>
+                        <h4>Diet Notes:</h4>
+                        <ul>
+                            <li>vegetarian: ${r.vegetarian}</li>
+                            <li>vegan: ${r.vegan}</li>
+                            <li>gluten free: ${r.glutenFree}</li>
+                            <li>dairy free: ${r.dairyFree}</li>
+                            <li>weight watchers smart points: ${r.weightWatcherSmartPoints}</li>
+                            <li>dish type: ${r.dishTypes}</li>
+                        </ul>
+
+                    </div>
+                    <!--footer-->
+                    <div class="modal-footer">
+                        <div>
+                            <small>Source:
+                                <a href="${r.sourceUrl}" alt="source link">${r.sourceName}</a>
+                            </small>
+                        </div>
+                        <form action="x">
+                            <div id="recipe-data">
+                                <input type="hidden" name="image-url" value="#">
+                                <input type="hidden" name="cid" value="#">
+                                <input type="hidden" name="title" value="#">
+                                <input type="hidden" name="summary" value="#">
+                                <input type="hidden" name="instructions" value="#">
+                                <input type="hidden" name="ready_in_minutes" value="#">
+                                <input type="hidden" name="servings" value="#">
+                                <input type="hidden" name="source_name" value="#">
+                                <input type="hidden" name="source_url" value="#">
+                                <input type="hidden" name="vegetarian" value="#">
+                                <input type="hidden" name="ingredients_cid" value="#">
+                                <input type="hidden" name="vegan" value="#">
+                                <input type="hidden" name="gluten_free" value="#">
+                                <input type="hidden" name="dairy_free" value="#">
+                                <input type="hidden" name="weight_watchers_smart_points" value="#">
+                                <input type="hidden" name="dish_type" value="#">
+                            </div>
+                            <div id="ingredients">      <!--for each-->
+                                <input type="hidden" name="ingredients_name" value="#">
+                                <input type="hidden" name="ingredients_original" value="#">
+                                <input type="hidden" name="ingredients_amount" value="#">
+                                <input type="hidden" name="ingredients_unit" value="#">
+                            </div>
+                            <div>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                <button class="btn btn-primary" type="button">Add to DB</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+    `
 }
 
-// TEST
-function testFunction(id){
-    console.log('clicked the test')
-    // Call api data
-    // Then modal guts go here
-    $('#recipe-details-modal-content').html(`<p>${id}</p>`);
-
+// CREATE INGREDIENT LIST ITEM
+function ingredientListItem(rI){
+    return `
+        <li>${rI.name}, Amount: ${rI.original}</li>
+    `
 }
 
+// COMBINE INGREDIENTS INTO A LIST
+function ingredientList(r){
+    let output = '';
+    for (let i = 0; i < r.extendedIngredients.length; i++) {
+        output += ingredientListItem(r.extendedIngredients[i])
+    }
+    return output;
+}
