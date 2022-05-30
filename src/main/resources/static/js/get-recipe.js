@@ -167,28 +167,28 @@ function makeModalBody(r){
                         </div>
                         <form action="x">
                             <div id="recipe-data">
-                                <input type="hidden" name="image-url" value="#">
-                                <input type="hidden" name="cid" value="#">
-                                <input type="hidden" name="title" value="#">
-                                <input type="hidden" name="summary" value="#">
-                                <input type="hidden" name="instructions" value="#">
-                                <input type="hidden" name="ready_in_minutes" value="#">
-                                <input type="hidden" name="servings" value="#">
-                                <input type="hidden" name="source_name" value="#">
-                                <input type="hidden" name="source_url" value="#">
-                                <input type="hidden" name="vegetarian" value="#">
-                                <input type="hidden" name="ingredients_cid" value="#">
-                                <input type="hidden" name="vegan" value="#">
-                                <input type="hidden" name="gluten_free" value="#">
-                                <input type="hidden" name="dairy_free" value="#">
-                                <input type="hidden" name="weight_watchers_smart_points" value="#">
-                                <input type="hidden" name="dish_type" value="#">
+                                <input type="hidden" name="image-url" value="${r.image}">
+                                <input type="hidden" name="cid" value="${r.id}">
+                                <input type="hidden" name="title" value="${r.title}">
+                                <input type="hidden" name="summary" value="${r.summary}">
+                                <input type="hidden" name="instructions" value="${r.instructions}">
+                                <input type="hidden" name="ready_in_minutes" value="${r.readyInMinutes}">
+                                <input type="hidden" name="servings" value="${r.servings}">
+                                <input type="hidden" name="source_name" value="${r.sourceName}">
+                                <input type="hidden" name="source_url" value="${r.sourceUrl}">
+                                <input type="hidden" name="vegetarian" value="${r.vegetarian}">
+                                <input type="hidden" name="vegan" value="${r.vegan}">
+                                <input type="hidden" name="gluten_free" value="${r.glutenFree}">
+                                <input type="hidden" name="dairy_free" value="${r.dairyFree}">
+                                <input type="hidden" name="weight_watchers_smart_points" value="${r.weightWatcherSmartPoints}">
+                                <input type="hidden" name="dish_type" value="${r.dishTypes}">
                             </div>
                             <div id="ingredients">      <!--for each-->
-                                <input type="hidden" name="ingredients_name" value="#">
-                                <input type="hidden" name="ingredients_original" value="#">
-                                <input type="hidden" name="ingredients_amount" value="#">
-                                <input type="hidden" name="ingredients_unit" value="#">
+    
+    
+                            ` + hiddenIngredientInputList(r) + `
+    
+    
                             </div>
                             <div>
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
@@ -211,7 +211,25 @@ function ingredientListItem(rI){
 function ingredientList(r){
     let output = '';
     for (let i = 0; i < r.extendedIngredients.length; i++) {
-        output += ingredientListItem(r.extendedIngredients[i])
+        output += ingredientListItem(r.extendedIngredients[i]);
+    }
+    return output;
+}
+
+// CREATE HIDDEN INGREDIENT INPUT FOR FORM
+function hiddenIngredientInputs(rI){
+    return `
+                <input type="hidden" name="ingredients_id_${rI.id}" value="${rI.id}">
+                <input type="hidden" name="ingredients_name_${rI.id}" value="${rI.name}">
+                <input type="hidden" name="ingredients_original${rI.id}" value="${rI.original}">
+    `
+}
+
+// COMBINE HIDDEN INGREDIENT LIST FOR FORM
+function hiddenIngredientInputList(r){
+    let output = '';
+    for (let i = 0; i < r.extendedIngredients.length; i++) {
+        output += hiddenIngredientInputs(r.extendedIngredients[i]);
     }
     return output;
 }
