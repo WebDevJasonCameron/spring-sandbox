@@ -18,10 +18,12 @@
             <button id="get-recipe-btn" class="btn btn-outline-success my-3 w-100" type="submit">Search</button>
         </form>
         <!--cards-->
-        <div class="container" id="recipe-results"></div>
+        <div class="container" id="recipe-results"></div>       <!--Rem, JS pops this-->
         <!--details-->
         <div class="container" id="recipe-details"></div>
 
+        <!--MODAL-->
+        <div th:replace="/partials/partials.html :: recipe-details-modal"></div>
 
 
 

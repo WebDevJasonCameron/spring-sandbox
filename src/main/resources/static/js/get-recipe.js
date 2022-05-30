@@ -78,7 +78,7 @@ function makeCard(r){
         <div class="card border-0 mt-4">
             <div class="row no-gutters">
                 <div class="col-sm-3">
-                    <img src="${r.image}"" alt="#" class="card-img-top">
+                    <img src="${r.image}" alt="#" class="card-img-top">
                 </div>
                 <div class="col-sm-9">
                     <div class="card-body">
@@ -90,22 +90,31 @@ function makeCard(r){
                         </div>
                     </div>
                     <div class="card-footer">
-                        <form action="/recipes/get-details" method="post" >
+                        <form action="/recipes/get-details" method="post" >       <!--Can remove for modal-->
                             <input type="hidden" name="image" value="${r.image}" >
                             <input type="hidden" name="title" value="${r.title}" >
                             <input type="hidden" name="id" value="${r.id}" >
-                            <button type="submit" class="btn btn-primary add-btn">Add to DB
+                            <button type="submit" class="btn btn-primary add-btn">
+                                Add to DB
                             </button>  
                         </form>           
+                    </div>
+                    <div>
+                        <button 
+                            onclick="testFunction(${r.id})"
+                            class="btn btn-primary" 
+                            type="button" 
+                            data-toggle="modal" 
+                            data-target="#recipe-details-modal"
+                            >
+                                Access Modal
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     `
 }
-
-
-
 
 // COMBINE CARDS
 function combineCards(rL){
@@ -114,5 +123,19 @@ function combineCards(rL){
         output += makeCard(rL.results[i])
     }
     return output;
+}
+
+// CREATE MODAL BODY
+function makeModalBody(id){
+    return id
+}
+
+// TEST
+function testFunction(id){
+    console.log('clicked the test')
+    // Call api data
+    // Then modal guts go here
+    $('#recipe-details-modal-content').html(`<p>${id}</p>`);
+
 }
 
