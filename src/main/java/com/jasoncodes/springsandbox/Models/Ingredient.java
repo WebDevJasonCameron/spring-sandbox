@@ -33,9 +33,11 @@ public class Ingredient {
         this.ingredientName = ingredientName;
         this.ingredientOriginal = ingredientOriginal;
     }
-
-
-
+    public Ingredient(String ingredientName, String ingredientOriginal, Recipe recipe) {
+        this.ingredientName = ingredientName;
+        this.ingredientOriginal = ingredientOriginal;
+        this.recipe = recipe;
+    }
 
     // GET
     public long getId() {
@@ -47,9 +49,9 @@ public class Ingredient {
     public String getIngredientOriginal() {
         return ingredientOriginal;
     }
-
-
-
+    public Recipe getRecipe() {
+        return recipe;
+    }
 
     // SET
     public void setIngredientName(String ingredientName) {
@@ -58,9 +60,9 @@ public class Ingredient {
     public void setIngredientOriginal(String ingredientOriginal) {
         this.ingredientOriginal = ingredientOriginal;
     }
-
-
-
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+    }
 
     // CHECK
     @Override

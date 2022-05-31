@@ -1,6 +1,7 @@
 package com.jasoncodes.springsandbox.Controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jasoncodes.springsandbox.Models.Ingredient;
 import com.jasoncodes.springsandbox.Models.Recipe;
 import com.jasoncodes.springsandbox.Repositories.IngredientRepository;
 import com.jasoncodes.springsandbox.Repositories.RecipeRepository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -79,6 +81,8 @@ public class RecipeController {
                                         ){
 
         Recipe recipe;
+        List<Ingredient> ingredients = new ArrayList<>();
+
 
         if(recipeDao.findRecipeByCid(cid) != null){
             recipe = recipeDao.findRecipeByCid(cid);
@@ -105,7 +109,6 @@ public class RecipeController {
         System.out.println("ingredientOriginal = " + ingredientOriginal);
 
 
-
         recipe.setCid(cid);
         recipe.setTitle(title);
         recipe.setImageUrl(imageUrl);
@@ -121,8 +124,17 @@ public class RecipeController {
         recipe.setDairyFree(dairyFree);
         recipe.setDishType(dishType);
 
-
         recipeDao.save(recipe);
+
+        String[] iNames = ingredientName.split(",");
+        String[] iAmount = ingredientOriginal.split(",");
+
+        for (int i = 0; i < iNames.length; i++) {
+            Ingredient ingredient = new Ingredient(iNames[i], iAmount[i], recipe);
+            ingredientDao.save(ingredient);
+            ingredients.add(ingredient);
+        }
+
 
         return "redirect:/recipes/recipe-details-to-db";
     }
@@ -160,6 +172,7 @@ public class RecipeController {
         
         return "/recipes/test-json-from-db";
     }
+
 
 
 }  //<--END

@@ -16,7 +16,7 @@ Hello Everyone!  If you're viewing this, you might be wondering what is a Spring
 - [ ] Complex DB
   - [X] Pull recipe details from API using recipe list (compiled from original API pull)
   - [X] Create modal to show recipe details.  Include hidden form with details data
-  - [ ] Submit data from modal to the (more complex tables) db
+  - [X] Submit data from modal to the (more complex tables) db
   - [ ] Ensure one-to-many relationship between recipe and ingredients is populated
   - [ ] Scrape API for hundreds of recipes (with different dishType attributes)
 - [ ] Set up User
