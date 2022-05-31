@@ -1,6 +1,7 @@
 // VARS, ARRAYS AND LISTS
 let rLR;
 let rD;
+let rDJson;
 
 /**
  *   PAGE ACTIONS
@@ -165,23 +166,25 @@ function makeModalBody(r){
                                 <a href="${r.sourceUrl}" alt="source link">${r.sourceName}</a>
                             </small>
                         </div>
-                        <form action="x">
+                        <form action="/recipes/recipe-details-to-db" method="post">
                             <div id="recipe-data">
-                                <input type="hidden" name="image-url" value="${r.image}">
                                 <input type="hidden" name="cid" value="${r.id}">
                                 <input type="hidden" name="title" value="${r.title}">
-                                <input type="hidden" name="summary" value="${r.summary}">
+                                <input type="hidden" name="image-url" value="${r.image}">
+                                <input type="hidden" name="summary" value="${r.summary.replaceAll('"', '')}">
                                 <input type="hidden" name="instructions" value="${r.instructions}">
-                                <input type="hidden" name="ready_in_minutes" value="${r.readyInMinutes}">
+                                <input type="hidden" name="ready-in-minutes" value="${r.readyInMinutes}">
                                 <input type="hidden" name="servings" value="${r.servings}">
-                                <input type="hidden" name="source_name" value="${r.sourceName}">
-                                <input type="hidden" name="source_url" value="${r.sourceUrl}">
+                                <input type="hidden" name="source-name" value="${r.sourceName}">
+                                <input type="hidden" name="source-url" value="${r.sourceUrl}">
                                 <input type="hidden" name="vegetarian" value="${r.vegetarian}">
                                 <input type="hidden" name="vegan" value="${r.vegan}">
-                                <input type="hidden" name="gluten_free" value="${r.glutenFree}">
-                                <input type="hidden" name="dairy_free" value="${r.dairyFree}">
-                                <input type="hidden" name="weight_watchers_smart_points" value="${r.weightWatcherSmartPoints}">
-                                <input type="hidden" name="dish_type" value="${r.dishTypes}">
+                                <input type="hidden" name="gluten-free" value="${r.glutenFree}">
+                                <input type="hidden" name="dairy-free" value="${r.dairyFree}">
+                                <input type="hidden" name="weight-watchers-smart-points" value="${r.weightWatcherSmartPoints}">
+                                <input type="hidden" name="dish-type" value="${r.dishTypes}">
+
+                                
                             </div>
                             <div id="ingredients">      <!--for each-->
     
@@ -191,8 +194,17 @@ function makeModalBody(r){
     
                             </div>
                             <div>
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                                <button class="btn btn-primary" type="button">Add to DB</button>
+                                <button 
+                                    class="btn btn-secondary" 
+                                    type="button" 
+                                    data-dismiss="modal">
+                                        Close
+                                </button>                                
+                                <button 
+                                    class="btn btn-primary" 
+                                    type="submit">
+                                        Add to DB
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -219,9 +231,8 @@ function ingredientList(r){
 // CREATE HIDDEN INGREDIENT INPUT FOR FORM
 function hiddenIngredientInputs(rI){
     return `
-                <input type="hidden" name="ingredients_id_${rI.id}" value="${rI.id}">
-                <input type="hidden" name="ingredients_name_${rI.id}" value="${rI.name}">
-                <input type="hidden" name="ingredients_original${rI.id}" value="${rI.original}">
+                <input type="hidden" name="ingredient-name" value="${rI.name}">
+                <input type="hidden" name="ingredient-original" value="${rI.original}">
     `
 }
 
