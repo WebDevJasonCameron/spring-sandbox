@@ -21,9 +21,9 @@ public class Recipe {
     private String title;
     @Column(name = "image_url")
     private String imageUrl;
-    @Column(name = "summary", length = 10_000)
+    @Column(name = "summary", length = 2000)
     private String summary;
-    @Column(name = "instructions", length = 10_000)
+    @Column(name = "instructions", length = 2000)
     private String instructions;
     @Column(name = "ready_in_minutes")
     private String readyInMinutes;
@@ -41,8 +41,6 @@ public class Recipe {
     private boolean glutenFree;
     @Column(name = "dairy_free")
     private boolean dairyFree;
-    @Column(name = "weight_watchers_smart_points")
-    private long weightWatchersSmartPoints;
     @Column(name = "dish_type")
     private String dishType;
 
@@ -61,7 +59,7 @@ public class Recipe {
         this.title = title;
         this.imageUrl = imageUrl;
     }
-    public Recipe(long cid, String title, String imageUrl, String summary, String instructions, String readyInMinutes, String servings, String sourceName, String sourceUrl, boolean vegetarian, boolean vegan, boolean glutenFree, boolean dairyFree, long weightWatchersSmartPoints, String dishType) {
+    public Recipe(long cid, String title, String imageUrl, String summary, String instructions, String readyInMinutes, String servings, String sourceName, String sourceUrl, boolean vegetarian, boolean vegan, boolean glutenFree, boolean dairyFree, String dishType, List<Ingredient> ingredients) {
         this.cid = cid;
         this.title = title;
         this.imageUrl = imageUrl;
@@ -75,8 +73,8 @@ public class Recipe {
         this.vegan = vegan;
         this.glutenFree = glutenFree;
         this.dairyFree = dairyFree;
-        this.weightWatchersSmartPoints = weightWatchersSmartPoints;
         this.dishType = dishType;
+        this.ingredients = ingredients;
     }
 
 
@@ -125,9 +123,6 @@ public class Recipe {
     public boolean isDairyFree() {
         return dairyFree;
     }
-    public long getWeightWatchersSmartPoints() {
-        return weightWatchersSmartPoints;
-    }
     public String getDishType() {
         return dishType;
     }
@@ -174,9 +169,6 @@ public class Recipe {
     public void setDairyFree(boolean dairyFree) {
         this.dairyFree = dairyFree;
     }
-    public void setWeightWatchersSmartPoints(long weightWatchersSmartPoints) {
-        this.weightWatchersSmartPoints = weightWatchersSmartPoints;
-    }
     public void setDishType(String dishType) {
         this.dishType = dishType;
     }
@@ -200,7 +192,6 @@ public class Recipe {
                 ", vegan=" + vegan +
                 ", glutenFree=" + glutenFree +
                 ", dairyFree=" + dairyFree +
-                ", weightWatchersSmartPoints=" + weightWatchersSmartPoints +
                 ", dishType='" + dishType + '\'' +
                 '}';
     }

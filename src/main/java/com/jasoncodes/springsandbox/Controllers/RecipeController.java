@@ -72,7 +72,6 @@ public class RecipeController {
                                         @RequestParam(name = "vegan") boolean vegan,
                                         @RequestParam(name = "gluten-free") boolean glutenFree,
                                         @RequestParam(name = "dairy-free") boolean dairyFree,
-                                        @RequestParam(name = "weight-watchers-smart-points") long weightWatchersSmartPoints,
                                         @RequestParam(name = "dish-type") String dishType,
 
                                         @RequestParam(name = "ingredient-name") String ingredientName,
@@ -100,7 +99,6 @@ public class RecipeController {
         System.out.println("vegan = " + vegan);
         System.out.println("glutenFree = " + glutenFree);
         System.out.println("dairyFree = " + dairyFree);
-        System.out.println("weightWatchersSmartPoints = " + weightWatchersSmartPoints);
         System.out.println("dishType = " + dishType);
         System.out.println("------");
         System.out.println("ingredientName = " + ingredientName);
@@ -121,7 +119,6 @@ public class RecipeController {
         recipe.setVegan(vegan);
         recipe.setGlutenFree(glutenFree);
         recipe.setDairyFree(dairyFree);
-        recipe.setWeightWatchersSmartPoints(weightWatchersSmartPoints);
         recipe.setDishType(dishType);
 
 
@@ -130,7 +127,13 @@ public class RecipeController {
         return "redirect:/recipes/recipe-details-to-db";
     }
 
+    @GetMapping("/recipe-details-to-db")
+    public String showRecipeDetailsToDb(){
 
+
+
+        return "/recipes/recipe-details-to-db";
+    }
 
 
 

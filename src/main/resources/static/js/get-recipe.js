@@ -154,7 +154,6 @@ function makeModalBody(r){
                             <li>vegan: ${r.vegan}</li>
                             <li>gluten free: ${r.glutenFree}</li>
                             <li>dairy free: ${r.dairyFree}</li>
-                            <li>weight watchers smart points: ${r.weightWatcherSmartPoints}</li>
                             <li>dish type: ${r.dishTypes}</li>
                         </ul>
 
@@ -172,16 +171,15 @@ function makeModalBody(r){
                                 <input type="hidden" name="title" value="${r.title}">
                                 <input type="hidden" name="image-url" value="${r.image}">
                                 <input type="hidden" name="summary" value="${r.summary.replaceAll('"', '')}">
-                                <input type="hidden" name="instructions" value="${r.instructions}">
+                                <input type="hidden" name="instructions" value="${r.instructions.replaceAll('"', '')}">
                                 <input type="hidden" name="ready-in-minutes" value="${r.readyInMinutes}">
                                 <input type="hidden" name="servings" value="${r.servings}">
-                                <input type="hidden" name="source-name" value="${r.sourceName}">
-                                <input type="hidden" name="source-url" value="${r.sourceUrl}">
+                                <input type="hidden" name="source-name" value="${r.sourceName.replaceAll('"', '')}">
+                                <input type="hidden" name="source-url" value="${r.sourceUrl.replaceAll('"', '')}">
                                 <input type="hidden" name="vegetarian" value="${r.vegetarian}">
                                 <input type="hidden" name="vegan" value="${r.vegan}">
                                 <input type="hidden" name="gluten-free" value="${r.glutenFree}">
                                 <input type="hidden" name="dairy-free" value="${r.dairyFree}">
-                                <input type="hidden" name="weight-watchers-smart-points" value="${r.weightWatcherSmartPoints}">
                                 <input type="hidden" name="dish-type" value="${r.dishTypes}">
 
                                 
