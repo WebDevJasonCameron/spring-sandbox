@@ -1,57 +1,47 @@
-
-//     /html/body/div/span/text()[1]
-//     //*[@id="json-input"]/text()[1]
-
-let myJsonData =  $('#json-input').innerHTML;
-myJsonData = JSON.stringify(myJsonData);
-
-console.log('the myJsonData with jquery: ' + myJsonData);
-
-
+/**
+ * RECIPE STUFF
+ */
+// V JS works by grabbing the hidden div tag with json th:text span inside
 let jsonInput = document.getElementById('json-input').innerText;
-console.log('the jasonInput with v js: ' + jsonInput)
+// console.log('the jasonInput with v js: ' + jsonInput)
+
+// JSON parse
+let jIP = JSON.parse(jsonInput);
+// console.log(jIP);
+// console.log(jIP[9]);
+// console.log(jIP[9].title);
+
+const count = Object.keys(jIP).length;
+// console.log(count);
+
+let rCount = 0;
+
+// JS Searching through the JSON list
+// for (let i = 0; i < jIP.length; i++) {
+//     if(jIP[i].dishType.indexOf("lunch") > -1){
+//         rCount += 1;
+//         console.log(rCount+'. ' + jIP[i].dishType);
+//         console.log(rCount+'. ' + jIP[i].title);
+//     }
+// }
 
 
-let jsonInputParsed = JSON.parse(jsonInput);
-console.log(jsonInputParsed);
+/**
+ * INGREDIENT STUFF
+ */
+let iJsonInput = document.getElementById('iJson-input').innerText;
+let iJIP = JSON.parse(iJsonInput);
+
+const iCount = Object.keys(iJIP).length;
+console.log('count for ingredients is: ' + iCount)
+console.log(iJIP);
 
 
 
 
-
-class Recipe {
-
-    constructor(id,
-                cid,
-                title,
-                imageUrl,
-                summary,
-                instructions,
-                readyInMinutes,
-                servings,
-                sourceName,
-                sourceUrl,
-                vegetarian,
-                vegan,
-                glutenFree,
-                dairyFree,
-                dishType) {
-
-        this.id = id;
-        this.cid = cid;
-        this.title = title;
-        this.imageUrl = imageUrl;
-        this.summary = summary;
-        this.instructions = instructions;
-        this.readyInMinutes = readyInMinutes;
-        this.servings = servings;
-        this.sourceName = sourceName;
-        this.sourceUrl = sourceUrl;
-        this.vegetarian = vegetarian;
-        this.vegan = vegan;
-        this.glutenFree = glutenFree;
-        this.dairyFree = dairyFree;
-        this.dishType = dishType;
-    }
-
+// Helper function
+function getIng(rip){
+    for (let i = 0; i < iJIP.length; i++) {
+        }
 }
+

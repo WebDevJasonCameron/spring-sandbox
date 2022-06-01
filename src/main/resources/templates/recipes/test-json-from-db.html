@@ -13,11 +13,11 @@
 
     <!--MAIN-->
     <!--Viewable-->
-    <!--/*@thymesVar id="recipes" type=""*/-->
     <h2>show</h2>
     <div th:each="recipe : ${recipes}">
         <span th:text="${recipe.title}">recipe title</span>
     </div>
+
     <!--Hidden-->
     <h2>hidden</h2>
     <div th:each="recipe : ${recipes}">
@@ -27,13 +27,18 @@
     <h2>bottom</h2>
     <!--Json Show  ... ABLE TO SHOW ALL JSON STRING-->
 <!--    <span th:text="${json}">String of the R</span>-->
+    <span th:text="${iJson}">String of the I</span>
 
 
-    <!--Json Hide-->
+    <!--RECIPE: Json Hide-->
     <div id="json-input" style="display: none">
         <span  th:text="${json}"></span>
     </div>
 
+    <!--INGREDIENTS: Json Hide-->
+    <div id="iJson-input" style="display: none">
+        <span  th:text="${iJson}"></span>
+    </div>
 
 
 

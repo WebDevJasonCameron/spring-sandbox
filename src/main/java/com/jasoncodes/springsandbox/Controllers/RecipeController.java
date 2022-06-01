@@ -142,8 +142,6 @@ public class RecipeController {
     @GetMapping("/recipe-details-to-db")
     public String showRecipeDetailsToDb(){
 
-
-
         return "/recipes/recipe-details-to-db";
     }
 
@@ -154,22 +152,36 @@ public class RecipeController {
     public String showJsonTestFromDB(Model model){
 
         List<Recipe> recipes  = recipeDao.findAll();
+        List<Ingredient> ingredients = ingredientDao.findAll();
+
 
         String json = "";
+        String iJson = "";
 
-        ObjectMapper objectMapper = new ObjectMapper();                 //<--KEY to JSON formatting!
+
+        //<--KEY to JSON formatting!
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // Set Recipe data into json
         try {
             json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(recipes);
         } catch (Exception e){
             e.printStackTrace();
         }
 
-        model.addAttribute("json", json);
+        // Set Ingredient data into json
+        try {
+            iJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(ingredients);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
+
+        model.addAttribute("json", json);
+        model.addAttribute("iJson", iJson);
         model.addAttribute("recipes", recipes);
 
-//        System.out.println("json = " + json);
-        
+
         return "recipes/test-json-from-db";
     }
 
