@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="/partials/partials.html :: head ('JS Recipe Cards')"></head>
+<body>
+<div class="container">
+  <!--NAV-->
+  <nav th:replace="/partials/partials.html :: nav-component"></nav>
+
+  <!--HEADER-->
+  <section th:replace="/partials/partials.html :: header-section ('JS Recipe Cards')"></section>
+
+  <!--MAIN-->
+  <div id="r-cards" class="container w-75">
+  </div>
+
+
+
+
+  <!--JSON Data from DB-->
+  <div id="json-input" style="display: none">
+    <span  th:text="${json}"></span>
+  </div>
+
+  <!--SCRIPTS-->
+  <section th:replace="/partials/partials.html :: script-section"></section>
+  <script th:src="@{/js/test-js-r-card.js}"></script>
+
+</div>
+</body>
+</html>

@@ -9,17 +9,17 @@ Hello Everyone!  If you're viewing this, you might be wondering what is a Spring
   - [X] Show data in html with JS
 - [X] Simple db table populate
   - [X] Push data into local db using JS and Spring MVC
-- [ ] Convert data between Java and JS
+- [X] Convert data between Java and JS
   - [X] Use Java to pull data from db, converting it into JSON 
   - [X] Hide JSON data within page 
   - [X] Access JSON data with JS
-  - [ ] Convert it into an array of JS obj
-- [ ] Complex DB
+  - [X] Convert it into an array of JS obj
+- [X] Complex DB
   - [X] Pull recipe details from API using recipe list (compiled from original API pull)
   - [X] Create modal to show recipe details.  Include hidden form with details data
   - [X] Submit data from modal to the (more complex tables) db
-  - [ ] Ensure one-to-many relationship between recipe and ingredients is populated
-  - [ ] Scrape API for hundreds of recipes (with different dishType attributes)
+  - [X] Ensure one-to-many relationship between recipe and ingredients is populated
+  - [X] Scrape API for hundreds of recipes (with different dishType attributes)
 - [ ] Set up User
   - [ ] User ability to mark recipe as "would like to try"
   - [ ] Within user profile, allow user to make changes to the recipe

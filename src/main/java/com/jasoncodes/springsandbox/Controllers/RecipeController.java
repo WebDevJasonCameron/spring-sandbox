@@ -186,5 +186,22 @@ public class RecipeController {
     }
 
 
+    // TEST JS CARDS
+    @GetMapping("/test-j-r-cards")
+    public String ShowTestJRCards(Model model){
+        List<Recipe> recipes  = recipeDao.findAll();
+        String json = "";
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(recipes);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        model.addAttribute("json", json);
+
+
+        return "/recipes/test-js-r-card";
+    }
+
 
 }  //<--END
