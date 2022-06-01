@@ -21,9 +21,9 @@ public class Recipe {
     private String title;
     @Column(name = "image_url")
     private String imageUrl;
-    @Column(name = "summary", length = 2000)
+    @Column(name = "summary", columnDefinition="TEXT")
     private String summary;
-    @Column(name = "instructions", length = 2000)
+    @Column(name = "instructions", columnDefinition="TEXT")
     private String instructions;
     @Column(name = "ready_in_minutes")
     private String readyInMinutes;

@@ -168,9 +168,9 @@ public class RecipeController {
 
         model.addAttribute("recipes", recipes);
 
-        System.out.println("json = " + json);
+//        System.out.println("json = " + json);
         
-        return "/recipes/test-json-from-db";
+        return "recipes/test-json-from-db";
     }
 
 

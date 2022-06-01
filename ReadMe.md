@@ -12,7 +12,8 @@ Hello Everyone!  If you're viewing this, you might be wondering what is a Spring
 - [ ] Convert data between Java and JS
   - [X] Use Java to pull data from db, converting it into JSON 
   - [X] Hide JSON data within page 
-  - [ ] Access JSON data with JS, converting it into an array of JS obj
+  - [X] Access JSON data with JS
+  - [ ] Convert it into an array of JS obj
 - [ ] Complex DB
   - [X] Pull recipe details from API using recipe list (compiled from original API pull)
   - [X] Create modal to show recipe details.  Include hidden form with details data

@@ -1,7 +1,6 @@
 // VARS, ARRAYS AND LISTS
 let rLR;
 let rD;
-let rDJson;
 
 /**
  *   PAGE ACTIONS
@@ -10,7 +9,7 @@ let rDJson;
 $('#get-recipe-btn').on('click', (e) => {
     e.preventDefault();
     getSpoonRecipeListByKeyWord($('#search-input').val())
-} )
+})
 
 // TEST
 function testFunction(id){
@@ -24,8 +23,8 @@ function testFunction(id){
 // GET R LIST
 function getSpoonRecipeListByKeyWord(kw){
     // const apiKey = SPOON_KEY_01;
-    const apiKey = SPOON_KEY_02;
-    // const apiKey = SPOON_KEY_03;
+    // const apiKey = SPOON_KEY_02;
+    const apiKey = SPOON_KEY_03;
 
     const spoonURL = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=' + apiKey + '&query=' + kw + '&offset=0&number=10';
     const readOption = {
@@ -45,13 +44,13 @@ function getSpoonRecipeListByKeyWord(kw){
 // GET R DETAILS
 function getSpoonRecipeDetailsByID(cid){
     // const apiKey = SPOON_KEY_01;
-    const apiKey = SPOON_KEY_02;
-    // const apiKey = SPOON_KEY_03;
+    // const apiKey = SPOON_KEY_02;
+    const apiKey = SPOON_KEY_03;
 
     const spoonURL = 'https://api.spoonacular.com/recipes/' + cid + '/information?apiKey=' + apiKey;
     const readOption = {
         method: 'GET',
-    };
+    };``
 
     fetch(spoonURL, readOption)
         .then((res) => res.json())

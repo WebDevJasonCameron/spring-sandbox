@@ -25,12 +25,23 @@
     </div>
     <!--Marking Bottom-->
     <h2>bottom</h2>
-    <!--String Hidden-->
-    <span th:text="${json}">String of the R</span>
+    <!--Json Show  ... ABLE TO SHOW ALL JSON STRING-->
+<!--    <span th:text="${json}">String of the R</span>-->
+
+
+    <!--Json Hide-->
+    <div id="json-input" style="display: none">
+        <span  th:text="${json}"></span>
+    </div>
+
+
 
 
     <!--SCRIPTS-->
     <section th:replace="/partials/partials.html :: script-section"></section>
+    <script th:src="@{/js/manip-db-json.js}"></script>
+
+
 </div>
 </body>
 </html>
